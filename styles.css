@@ -18,6 +18,9 @@
     background-color: #f0eef1;
     padding: 40px 100px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .book-section{
@@ -57,10 +60,41 @@
     background-color: #9fff9c;
 }
 
+.read:hover{
+    background-color: #8cdf8a;
+}
+
 .not-read{
     background-color: #ff9c9c;
 }
 
+.not-read:hover{
+    background-color: #e28b8b;
+}
+
 .remove{
     background-color: #efefef;
+}
+
+.remove:hover{
+    background-color: #d3d3d3;
+}
+
+.addBook{
+    background-color: #efefef;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: 700;
+    width: 200px;
+}
+
+.main-header{
+    display: flex;
+    justify-content: center;
+}
+
+.addBook:hover{
+    background-color: #d8d8d8;
 }

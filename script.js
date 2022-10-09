@@ -2,6 +2,11 @@ let myLibrary = [];
 
 let bookSection = document.querySelector('.book-section');
 
+let book = new Book("bla", "b. la", 321, false)
+let other = new Book("other", "other", 123, true)
+addBookToLibrary(book)
+addBookToLibrary(other)
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -48,6 +53,9 @@ function displayLibrary() {
         remove.classList.add('remove')
         remove.textContent = "Remove";
         card.appendChild(remove)
+        remove.addEventListener('click', () =>{
+            bookSection.removeChild(card)
+        })
 
         bookSection.appendChild(card)
     }
