@@ -4,8 +4,10 @@ let bookSection = document.querySelector('.book-section');
 
 let book = new Book("bla", "b. la", 321, false)
 let other = new Book("other", "other", 123, true)
+let otherOther = new Book("otherother", "otherother", 456, true)
 addBookToLibrary(book)
 addBookToLibrary(other)
+addBookToLibrary(otherOther)
 
 function Book(title, author, pages, read) {
     this.title = title;
