@@ -15,14 +15,17 @@
     </div>
     <div class="wrapper">
         <div class="newBook">
-            <h2>Add new book</h2>
-            <div class="form">
+            <form>
+                <h2>Add new book</h2>
                 <input type="text" name="title" id="title" placeholder="Title" required>
                 <input type="text" name="author" id="author" placeholder="Author" required>
                 <input type="number" name="pages" id="pages" placeholder="Pages" required>
-                <label for="nafin">Have you read it? <span><input type="checkbox" name="read" id="read"></span></label>
+                <div class="readDiv">
+                    <label>Have you read it?</label>
+                    <input type="checkbox" name="read" id="read">
+                </div>
                 <button data-close-button type="submit" class="submit">Submit</button>
-            </div>
+            </form>
         </div>
         <div id="overlay"></div>
         <div class="main-header">
