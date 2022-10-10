@@ -14,8 +14,19 @@
         <h1>library</h1>
     </div>
     <div class="wrapper">
+        <div class="newBook">
+            <h2>Add new book</h2>
+            <div class="form">
+                <input type="text" name="title" id="title" placeholder="Title" required>
+                <input type="text" name="author" id="author" placeholder="Author" required>
+                <input type="number" name="pages" id="pages" placeholder="Pages" required>
+                <label for="nafin">Have you read it? <span><input type="checkbox" name="read" id="read"></span></label>
+                <button data-close-button type="submit" class="submit">Submit</button>
+            </div>
+        </div>
+        <div id="overlay"></div>
         <div class="main-header">
-            <button class="addBook">+ Add book</button>
+            <button class="addBook" data-modal-target=".newBook">+ Add book</button>
         </div>
         <div class="book-section">
             
