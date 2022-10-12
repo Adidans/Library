@@ -3,52 +3,14 @@ let myLibrary = [];
 const openModalButtons = document.querySelectorAll('[data-modal-target]');
 const closeModalButtons = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay')
-const form = document.getElementsByTagName('form')
+const form = document.getElementById('form')
 
-const bookSection = document.querySelector('.book-section');
+const bookSection = document.getElementById('book-section')
 
-const titleForm = document.querySelector('#title')
-const authorForm = document.querySelector('#author')
-const pagesForm = document.querySelector('#pages')
-const readForm = document.querySelector('#read')
-
-openModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = document.querySelector(button.dataset.modalTarget)
-        openModal(modal)
-    })
-});
-
-overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.newBook.active')
-    modals.forEach(modal =>{
-        overlayClicked = true;
-        closeModal(modal)
-    })
-})
-
-form.addEventListener('submit', (event) =>{
-    const modal = button.closest('.newBook');
-    if(titleForm.textContent != '' && authorForm.textContent != '' && pagesForm.textContent != ''){
-        closeModal(modal)
-    }
-})
-
-function openModal(modal) {
-    if(modal == null) return
-    modal.classList.add('active')
-    overlay.classList.add('active')
-}
-
-function closeModal(modal) {
-    if(modal == null){
-        return
-    } 
-    else{
-        modal.classList.remove('active')
-        overlay.classList.remove('active')
-    }
-}
+const titleForm = document.getElementById('title')
+const authorForm = document.getElementById('author')
+const pagesForm = document.getElementById('pages')
+const readForm = document.getElementById('read')
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -98,8 +60,53 @@ function displayLibrary() {
         card.appendChild(remove)
         remove.addEventListener('click', () =>{
             bookSection.removeChild(card)//janonem no array ari nevis tikai no display
+            // const book = document.querySelector('[data-num]')
         })
 
         bookSection.appendChild(card)
     }
 }
+
+openModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = document.querySelector(button.dataset.modalTarget)
+        openModal(modal)
+    })
+});
+
+overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.newBook.active')
+    modals.forEach(modal =>{
+        closeModal(modal)
+    })
+})
+
+form.addEventListener('submit', (event) =>{
+    event.preventDefault()
+    const modal = document.querySelector('.newBook');
+    let book = new Book(titleForm.value, authorForm.value, pagesForm.value, readForm.checked)
+    addBookToLibrary(book)
+    displayLibrary() 
+    closeModal(modal)
+    titleForm.value = ''
+    authorForm.value = ''
+    pagesForm.value = ''
+})
+
+function openModal(modal) {
+    if(modal == null) return
+    modal.classList.add('active')
+    overlay.classList.add('active')
+}
+
+function closeModal(modal) {
+    if(modal == null){
+        return
+    } 
+    else{
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+}
+
+

@@ -23,9 +23,9 @@
     gap: 20px;
 }
 
-.book-section{
+#book-section{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
@@ -160,6 +160,10 @@ input{
     width: 100%;
     border: none;
     font-weight: 700;
+}
+
+.submit:hover{
+    background-color: #8cdf8a;
 }
 
 .readDiv{

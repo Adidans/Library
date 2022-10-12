@@ -15,23 +15,23 @@
     </div>
     <div class="wrapper">
         <div class="newBook">
-            <form>
+            <form id="form">
                 <h2>Add new book</h2>
                 <input type="text" name="title" id="title" placeholder="Title" required>
                 <input type="text" name="author" id="author" placeholder="Author" required>
-                <input type="number" name="pages" id="pages" placeholder="Pages" required>
+                <input type="number" name="pages" id="pages" placeholder="Pages" required min="1">
                 <div class="readDiv">
                     <label>Have you read it?</label>
                     <input type="checkbox" name="read" id="read">
                 </div>
-                <button data-close-button type="submit" class="submit">Submit</button>
+                <button data-close-button type="submit" class="submit">Add book</button>
             </form>
         </div>
         <div id="overlay"></div>
         <div class="main-header">
             <button class="addBook" data-modal-target=".newBook">+ Add book</button>
         </div>
-        <div class="book-section">
+        <div id="book-section">
             
         </div>
     </div>
