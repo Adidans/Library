@@ -48,7 +48,7 @@ function displayLibrary() {
         card.appendChild(pages)
 
         let read = document.createElement('button')
-        if (myLibrary[i].read === true){
+        if (myLibrary[i].read === true && myLibrary[i].read.classList != "read"){
             read.classList.add("read")
             read.textContent = "Read"
         }
@@ -56,6 +56,7 @@ function displayLibrary() {
             read.classList.add("not-read")
             read.textContent = "Not read"
         }
+
         read.addEventListener('click', () =>{
             if(read.classList.contains('read')){
                 read.classList.remove('read')
