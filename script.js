@@ -12,6 +12,8 @@ const authorForm = document.getElementById('author')
 const pagesForm = document.getElementById('pages')
 const readForm = document.getElementById('read')
 
+const readBt = document.getElementById('readBt')
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -24,9 +26,11 @@ function addBookToLibrary(book) {
 }
 
 function displayLibrary() {
+    bookSection.innerHTML = ''
     for(let i = 0; i < myLibrary.length; i++){
         let card = document.createElement('div')
         card.classList.add('card')
+        card.dataset.num = i;
 
         let title = document.createElement('p')
         title.classList.add('title')
@@ -52,6 +56,19 @@ function displayLibrary() {
             read.classList.add("not-read")
             read.textContent = "Not read"
         }
+        read.addEventListener('click', () =>{
+            if(read.classList.contains('read')){
+                read.classList.remove('read')
+                read.classList.add('not-read')
+                read.textContent = "Not read"
+            }
+            else{
+                read.classList.add('read')
+                read.classList.remove('not-read')
+                read.textContent = "Read"
+            }
+        })
+        read.id = 'readBt'
         card.appendChild(read)
 
         let remove = document.createElement('button')
@@ -59,8 +76,8 @@ function displayLibrary() {
         remove.textContent = "Remove";
         card.appendChild(remove)
         remove.addEventListener('click', () =>{
-            bookSection.removeChild(card)//janonem no array ari nevis tikai no display
-            // const book = document.querySelector('[data-num]')
+            let removed = myLibrary.splice(document.querySelector('[data-num]').dataset.num, 1)
+            bookSection.removeChild(card)
         })
 
         bookSection.appendChild(card)
@@ -69,7 +86,7 @@ function displayLibrary() {
 
 openModalButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const modal = document.querySelector(button.dataset.modalTarget)
+        let modal = document.querySelector(button.dataset.modalTarget)
         openModal(modal)
     })
 });
@@ -91,6 +108,7 @@ form.addEventListener('submit', (event) =>{
     titleForm.value = ''
     authorForm.value = ''
     pagesForm.value = ''
+    readForm.checked = false
 })
 
 function openModal(modal) {
@@ -108,5 +126,3 @@ function closeModal(modal) {
         overlay.classList.remove('active')
     }
 }
-
-
